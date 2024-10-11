@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nginx-service
+spec:
+  selector:
+    app: nginx
+  ports:
+    - protocol: TCP
+      port: 80  
+      targetPort: 80 
+  type: LoadBalancer  
+ 
+
+# For Ingress Approch 
+
+# apiVersion: v1
+# kind: Service
+# metadata:
+#   name: nginx-service
+# spec:
+#   selector:
+#     app: nginx
+#   ports:
+#     - protocol: TCP
+#       port: 80  
+#       targetPort: 80 
+#   type: ClusterIP 
+
+# apiVersion: networking.k8s.io/v1
+# kind: Ingress
+# metadata:
+#   name: Nginx-ingress
+# spec:
+#   defaultBackend:
+#     service:
+#       name: nginx-service
+#       port:
+#         number: 80
